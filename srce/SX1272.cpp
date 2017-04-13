@@ -6463,11 +6463,13 @@ void SX1272::CarrierSense() {
                 e = doCAD(_send_cad_number);
                 _endDoCad=millis();
 
-                printf("--> CAD duration ");
-                printf("%d\n", _endDoCad-_startDoCad);
+                // ARO
+                //printf("--> CAD duration ");
+                //printf("%d\n", _endDoCad-_startDoCad);
 
                 if (!e) {
-                    printf("OK1\n");
+                    // ARO
+                    //printf("OK1\n");
 
                     if (_extendedIFS)  {
                         // wait for random number of CAD
@@ -6521,8 +6523,9 @@ void SX1272::CarrierSense() {
 
                 if (!e) {
 
-                    printf("--> RSSI ");
-                    printf("%d\n",_RSSI);
+                    // ARO
+                    //printf("--> RSSI ");
+                    //printf("%d\n",_RSSI);
 
                     while (_RSSI > -90 && rssi_retry_count) {
 

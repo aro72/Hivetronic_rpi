@@ -279,10 +279,12 @@ while True:
 		if (ch=='p'):		
 			data = sys.stdin.readline()
 			print now.isoformat()
-			print "rcv ctrl pkt info (^p): "+data,
+			# ARO
+			#print "rcv ctrl pkt info (^p): "+data,
 			arr = map(int,data.split(','))
-			print "splitted in: ",
-			print arr
+			# ARO
+			#print "splitted in: ",
+			#print arr
 			dst=arr[0]
 			ptype=arr[1]
 			ptypestr="N/A"
@@ -307,20 +309,24 @@ while True:
 				info_str="(dst=%d type=0x%.2X(%s) src=%d seq=%d len=%d SNR=%d RSSI=%d)" % (dst,ptype,ptypestr,src,seq,datalen,SNR,RSSI)
 			else:
 				info_str="rawFormat(len=%d SNR=%d RSSI=%d)" % (datalen,SNR,RSSI)	
-			print info_str
+			# ARO
+			#print info_str
 			# TODO: maintain statistics from received messages and periodically add these informations in the gateway.log file
 
 		if (ch=='r'):		
 			data = sys.stdin.readline()
-			print "rcv ctrl radio info (^r): "+data,
+			# ARO
+			#print "rcv ctrl radio info (^r): "+data,
 			arr = map(int,data.split(','))
-			print "splitted in: ",
-			print arr
+			# ARO
+			#print "splitted in: ",
+			#print arr
 			bw=arr[0]
 			cr=arr[1]
 			sf=arr[2]
 			info_str="(BW=%d CR=%d SF=%d)" % (bw,cr,sf)
-			print info_str
+			# ARO
+			#print info_str
 						
 		if (ch=='l'):
 			# TODO: LAS service	
@@ -346,7 +352,8 @@ while True:
 		
 		if _validappkey==1:
 
-			print 'valid app key: accept data'
+			#ARO
+			#print 'valid app key: accept data'
 					
 			ch=sys.stdin.read(1)
 			
@@ -501,13 +508,15 @@ while True:
 	#if (ch == '\xFF' or ch == '+'):
 	if (ch == '\xFF'):
 	
-		print "got first framing byte"
+		#ARO
+		#print "got first framing byte"
 		ch=sys.stdin.read(1)				
 		#if (ch == '\xFE' or ch == '('):
 		if (ch == '\xFE'):
 			#the data prefix is inserted by the gateway
 			#do not modify, unless you know what you are doing and that you modify lora_gateway (comment WITH_DATA_PREFIX)
-			print "--> got data prefix"
+			#ARO
+			#print "--> got data prefix"
 			
 			#we actually need to use DATA_PREFIX in order to differentiate data from radio coming to the post-processing stage
 			#if _wappkey is set then we have to first indicate that _validappkey=0

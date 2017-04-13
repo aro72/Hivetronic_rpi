@@ -704,7 +704,7 @@ void loop(void) {
   e = sx1272.receivePacketTimeout(w_timer);
   if (!e && sx1272._requestACK_indicator) {
     sprintf(sprintf_buf,"^$ACK requested by %d\n", sx1272.packet_received.src);                   
-    PRINT_STR("%s",sprintf_buf);        
+    //PRINT_STR("%s",sprintf_buf);        
   }
   #else
   // Receive message
@@ -718,6 +718,7 @@ void loop(void) {
 
   // ONLY FOR BASE STATION RECEIVING MESSAGES FROM DEVICE
   ///END/////////////////////////////////////////////////
+  // ARO: part used for Hivetronic
 
   if (!e) {
     int a=0, b=0;
