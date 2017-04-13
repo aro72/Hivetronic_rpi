@@ -5,8 +5,10 @@ lora_gateway: lora_gateway.o arduPi.o SX1272.o
 
 lora_gateway_pi2: lora_gateway_pi2.o arduPi_pi2.o SX1272_pi2.o
 	g++ -lrt -lpthread lora_gateway_pi2.o arduPi_pi2.o SX1272_pi2.o -o lora_gateway_pi2
-	rm -f lora_gateway
-	ln -s lora_gateway_pi2 ../lora_gateway
+	rm -f ../lora_gateway
+	ln -s srce/lora_gateway_pi2 ../lora_gateway
+	rm -f ../post_proc_gw.py
+	ln -s srce/post_processing_gw.py ../post_proc_gw.py
 		
 lora_gateway_wnetkey: lora_gateway.o arduPi.o SX1272_wnetkey.o
 	g++ -lrt -lpthread lora_gateway.o arduPi.o SX1272_wnetkey.o -o lora_gateway_wnetkey	
@@ -88,4 +90,5 @@ lora_gateway_dev_pi2.o: lora_gateway.cpp
 lib: arduPi.o arduPi_pi2.o SX1272.o SX1272_pi2.o SX1272_wnetkey.o SX1272_pi2_wnetkey.o lora_gateway.o lora_las_gateway.o lora_gateway_pi2.o lora_las_gateway_pi2.o
 
 clean:
-	-rm *.o lora_*gateway
+	#rm *.o lora_*gateway
+	rm *.o
