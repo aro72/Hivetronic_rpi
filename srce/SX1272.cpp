@@ -3788,28 +3788,29 @@ uint8_t SX1272::setACK()
         writeRegister(REG_FIFO, ACK.data[14]);   // Writing the ACK in FIFO
 
         //#if (SX1272_debug_mode > 0)
-        printf("## ACK set and written in FIFO ##\n");
+        // ARO
+	//printf("## ACK set and written in FIFO ##\n");
         // Print the complete ACK if debug_mode
-        printf("## ACK to send:\n");
+        //printf("## ACK to send:\n");
         writeRegister(REG_FIFO, ACK.data[1]);
-        printf("Destination: ");
-        printf("%d\n", ACK.dst);			 	// Printing destination
-        printf("Source: ");
-        printf("%d\n", ACK.src);			 	// Printing source
-        printf("ACK number: ");
-        printf("%d\n", ACK.packnum);			// Printing ACK number
-        printf("ACK length: ");
-        printf("%d\n", ACK.length);				// Printing ACK length
-        printf("ACK payload: ");
-        for (uint32_t i=0;i<15;i++) {
-		printf("%d ", ACK.data[i]);
-	}
-        printf("\n");                  // Printing ACK payload
+        //printf("Destination: ");
+        //printf("%d\n", ACK.dst);			 	// Printing destination
+        //printf("Source: ");
+        //printf("%d\n", ACK.src);			 	// Printing source
+        //printf("ACK number: ");
+        //printf("%d\n", ACK.packnum);			// Printing ACK number
+        //printf("ACK length: ");
+        //printf("%d\n", ACK.length);				// Printing ACK length
+        //printf("ACK payload: ");
+        //for (uint32_t i=0;i<15;i++) {
+	//	printf("%d ", ACK.data[i]);
+	//}
+        //printf("\n");                  // Printing ACK payload
 	//printf("%d\n", ACK.data[0]);			// Printing ACK payload
-        printf("ACK SNR last rcv pkt: ");
-        printf("%d\n", _SNR);
-        printf(" ##\n");
-        printf("\n");
+        //printf("ACK SNR last rcv pkt: ");
+        //printf("%d\n", _SNR);
+        //printf(" ##\n");
+        //printf("\n");
         //#endif
 
         state = 0;
