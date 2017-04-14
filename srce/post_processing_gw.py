@@ -353,7 +353,7 @@ while True:
 
 	if (ch=='\\'):
 		now = datetime.datetime.now()
-		print "\\"		
+		#print "\\"		
 		if _validappkey==1:
 
 			#ARO
