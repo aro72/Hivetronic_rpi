@@ -229,7 +229,7 @@ if __name__ == "__main__":
 while True:
 	sys.stdout.flush()
 	ch=sys.stdin.read(1)
-
+	#print "c1 = "+ch
 #expected prefixes
 #	^p 	indicates a ctrl pkt info ^pdst(%d),ptype(%d),src(%d),seq(%d),len(%d),SNR(%d),RSSI=(%d) for the last received packet
 #		example: ^p1,16,3,0,234,8,-45
@@ -274,11 +274,13 @@ while True:
 
 	if (ch=='^'):
 		now = datetime.datetime.now()
+		#print "^"
 		ch=sys.stdin.read(1)
-		
+		#print "c2 = "+ch		
 		if (ch=='p'):		
 			data = sys.stdin.readline()
-			print now.isoformat()
+			#print "^p" 
+			#print now.isoformat()
 			# ARO
 			#print "rcv ctrl pkt info (^p): "+data,
 			arr = map(int,data.split(','))
@@ -316,6 +318,7 @@ while True:
 		if (ch=='r'):		
 			data = sys.stdin.readline()
 			# ARO
+			#print "^r"
 			#print "rcv ctrl radio info (^r): "+data,
 			arr = map(int,data.split(','))
 			# ARO
@@ -334,6 +337,7 @@ while True:
 			
 		if (ch=='$' and _logGateway==1):
 			data = sys.stdin.readline()
+			#print "^$"
 			print "rcv gw output to log (^$): "+data,
 			f=open(os.path.expanduser(_gwlog_filename),"a")
 			now = datetime.datetime.now()
@@ -349,17 +353,17 @@ while True:
 
 	if (ch=='\\'):
 		now = datetime.datetime.now()
-		
+		print "\\"		
 		if _validappkey==1:
 
 			#ARO
 			#print 'valid app key: accept data'
 					
 			ch=sys.stdin.read(1)
-			
+			#print "c3 = "+ch			
 					
 			if (ch=='$'): #log on Dropbox
-				
+				#print "\\$"
 				data = sys.stdin.readline()
 				print "rcv msg to log (\$) on dropbox: "+data,
 				f=open(os.path.expanduser(_telemetrylog_filename),"a")
@@ -511,7 +515,8 @@ while True:
 	
 		#ARO
 		#print "got first framing byte"
-		ch=sys.stdin.read(1)				
+		ch=sys.stdin.read(1)
+		#print "c4 = "+ch				
 		#if (ch == '\xFE' or ch == '('):
 		if (ch == '\xFE'):
 			#the data prefix is inserted by the gateway
@@ -529,7 +534,7 @@ while True:
 			# if we have raw output from gw, then try to determine which kind of packet it is
 			if (_rawFormat==1):
 				ch=sys.stdin.read(1)
-				
+				#print "c5 = "+ch
 				# probably our modified Libelium header where the destination is the gateway and is the first byte
 				#
 				# format is dst(1B) ptype(1B) src(1B) seq(1B) [payload]
@@ -601,4 +606,4 @@ while True:
 		sys.stdin.readline()
 		continue
 	
-	sys.stdout.write(ch)
+	#sys.stdout.write(ch)
